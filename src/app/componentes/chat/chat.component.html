@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-button slot="start" fill="clear"
+    (click)="cerrarChat()">
+  <ion-icon name="arrow-back"
+  color="secondary"
+  class="icono">
+
+  </ion-icon></ion-button>
+    <ion-title>{{chat.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="room">
+    <ion-card *ngFor="let msg of room.Messages">
+      <ion-card-content >
+        {{msg.content}}
+      </ion-card-content>
+      <ion-card-subtitle class="espacios">
+        {{convertir(msg.date)}} - {{msg.type}}
+      </ion-card-subtitle>
+    </ion-card>
+  </div>
+
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-item >
+    <ion-textarea [(ngModel)]="msg" #area>
+    </ion-textarea>
+    <ion-button color="success" slot="end"
+    (click)="sendMessage()">
+    <ion-icon name="send"></ion-icon>
+  </ion-button>
+  </ion-item>
+</ion-footer>
